@@ -1,6 +1,6 @@
 import type React from "react";
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Mail } from "lucide-react";
 
 export function Hero(): React.ReactNode {
   return (

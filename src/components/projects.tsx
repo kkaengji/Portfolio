@@ -1,4 +1,5 @@
 import type React from "react";
+import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 
 interface Project {
@@ -15,21 +16,21 @@ export function Projects(): React.ReactNode {
   const projects: Project[] = [
     {
       id: 1,
-      title: "중고거래 경매 플랫폼",
+      title: "중고거래 경매 플랫폼_다리우스",
       description: "Next.js와 TypeScript를 이용한 완전한 전자상거래 솔루션",
       image: "/mainhome.png",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
       liveUrl: "https://www.ktdarius.shop/",
-      githubUrl: "https://github.com/KT-Darius",
+      githubUrl: "https://github.com/KT-Darius/blind-chicken-market",
     },
     {
       id: 2,
-      title: "준비중",
-      description: "",
-      image: "/social-media-app.jpg",
-      technologies: ["React", "Firebase", "Tailwind CSS", "Redux"],
-      liveUrl: "",
-      githubUrl: "",
+      title: "중고거래 경매 플랫폼_머지",
+      description: "기존의 프로젝트를 이용한 고도화 + 관리자페이지 구현",
+      image: "/mainhome.png",
+      technologies: ["React", "TypeScript", "Tailwind CSS"],
+      liveUrl: "https://www.ktdarius.shop/",
+      githubUrl: "https://github.com/kt-merge",
     },
     {
       id: 3,
@@ -55,10 +56,11 @@ export function Projects(): React.ReactNode {
             >
               {/* Image */}
               <div className="relative overflow-hidden bg-muted h-48">
-                <img
+                <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
 
