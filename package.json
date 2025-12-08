@@ -2,14 +2,14 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/kkaengji/Portfolio.git",
+  "homepage": "https://kkaengji.github.io/Portfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
