@@ -15,13 +15,14 @@ export function Hero(): React.ReactNode {
 
           {/* Main Title */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-balance leading-tight">
-            웹 풀스택 개발자 남경진입니다
+            프론트엔드 개발자 남경진입니다
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto text-balance">
-            React, Next.js, TypeScript로 아름답고 성능 좋은 웹 경험을 만듭니다.
-            사용자 중심의 디자인과 깔끔한 코드를 추구합니다.
+          {/* prettier-ignore */}
+          <p className="text-xl text-foreground/70 max-w-4xl mx-aut o">
+            웹 시스템 구축 실무 경험을 바탕으로 <br />
+            빠르게 변화하는 프론트엔드 환경에 유연하게 대응합니다.
           </p>
 
           {/* CTA Buttons */}
