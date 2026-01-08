@@ -16,28 +16,28 @@ export function Projects(): React.ReactNode {
   const projects: Project[] = [
     {
       id: 1,
-      title: "중고거래 경매 플랫폼_다리우스",
-      description: "Next.js와 TypeScript를 이용한 완전한 전자상거래 솔루션",
+      title: "Blind Chicken Market",
+      description: "실시간 경매 기반 중고거래 서비스 프로젝트",
       image: "/mainhome.png",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-      liveUrl: "https://www.ktdarius.shop/",
-      githubUrl: "https://github.com/KT-Darius/blind-chicken-market",
+      technologies: ["React", "TypeScript", "Tailwind CSS"],
+      liveUrl: "https://bcm.u-jinlee1029.store/",
+      githubUrl: "https://github.com/kt-merge",
     },
     {
       id: 2,
-      title: "중고거래 경매 플랫폼_머지",
-      description: "기존의 프로젝트를 이용한 고도화 + 관리자페이지 구현",
-      image: "/mainhome.png",
-      technologies: ["React", "TypeScript", "Tailwind CSS"],
-      liveUrl: "https://www.ktdarius.shop/",
-      githubUrl: "https://github.com/kt-merge",
+      title: "준비중",
+      description: "",
+      image: "/project-management-tool.jpg",
+      technologies: [""],
+      liveUrl: "",
+      githubUrl: "",
     },
     {
       id: 3,
       title: "준비중",
       description: "",
       image: "/project-management-tool.jpg",
-      technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
+      technologies: [""],
       liveUrl: "",
       githubUrl: "",
     },
@@ -66,21 +66,14 @@ export function Projects(): React.ReactNode {
 
               {/* Content */}
               <div className="p-6 space-y-4">
-                <h3 className="text-xl font-bold group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
+                <h3 className="text-xl font-bold group-hover:text-accent transition-colors">{project.title}</h3>
 
-                <p className="text-foreground/70 text-sm leading-relaxed">
-                  {project.description}
-                </p>
+                <p className="text-foreground/70 text-sm leading-relaxed">{project.description}</p>
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-2 py-1 bg-accent/10 text-accent rounded"
-                    >
+                    <span key={tech} className="text-xs px-2 py-1 bg-accent/10 text-accent rounded">
                       {tech}
                     </span>
                   ))}

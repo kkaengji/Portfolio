@@ -9,19 +9,19 @@ export function About(): React.ReactNode {
           {/* Content */}
           <div className="space-y-6">
             <p className="text-foreground/80 text-lg leading-relaxed">
-              안녕하세요! 저는 사용자 경험을 최우선으로 생각하는 웹 개발자입니다. 프론트엔드 기술을 중심으로 하지만,
-              풀스택 개발 경험도 있습니다.
+              서비스 흐름과 사용자 경험을 기준으로 개발하는 프론트엔드 개발자입니다. 화면 구현에 그치지 않고, 실제로
+              사용되는 서비스의 구조와 흐름을 함께 고민합니다.
             </p>
 
             <p className="text-foreground/80 text-lg leading-relaxed">
-              웹 개발 경력 4년 8개월 동안 ASP.NET 기반 QMS 시스템 웹 버전을 구축·운영하며, 실사용자를 고려한 화면 개발과
-              유지보수 경험을 쌓아왔습니다. 백엔드 중심의 환경에서 시작했지만, 현재는 React, Next.js, TypeScript 기반의
-              프론트엔드 개발 역량을 확장하며, 기존 웹 시스템 실무 경험을 바탕으로 안정성과 사용자 경험을 함께 고려하는
-              개발자로 성장하고 있습니다.
+              ASP.NET 기반 웹 솔루션을 약 4년 8개월간 개발·운영하며, 실사용자를 고려한 화면 구성과 유지보수 경험을
+              쌓아왔습니다. 현재는 Next.js와 TypeScript를 중심으로 프론트엔드 영역에 집중하며, 기존 실무 경험을 바탕으로
+              안정성과 확장성을 함께 고려한 개발을 지향하고 있습니다.
             </p>
 
             <p className="text-foreground/80 text-lg leading-relaxed">
-              문제 해결을 좋아하고, 새로운 기술을 배우는 것에 열정적입니다. 팀과 협업하며 함께 성장하는 것을 추구합니다.
+              최근에는 하나의 서비스를 새로 만드는 것보다, 이미 동작하는 프로젝트를 고도화하며 사용자 경험과 구조를
+              개선하는 데 더 많은 가치를 두고 있습니다.
             </p>
 
             {/* Quick Info */}
@@ -32,7 +32,7 @@ export function About(): React.ReactNode {
               </div>
               <div className="border-l-2 border-accent pl-4">
                 <p className="text-accent text-sm font-semibold">경력</p>
-                <p className="text-foreground/80">4+ 년</p>
+                <p className="text-foreground/80">4년</p>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@ export function About(): React.ReactNode {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-6">
             <div className="bg-background rounded-lg p-6 border border-border">
-              <div className="text-3xl font-bold text-accent mb-2">4y+</div>
+              <div className="text-3xl font-bold text-accent mb-2">4+</div>
               <p className="text-foreground/70">웹 개발 실무 경력</p>
             </div>
             <div className="bg-background rounded-lg p-6 border border-border">

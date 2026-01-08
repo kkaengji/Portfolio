@@ -20,9 +20,9 @@ export function Hero(): React.ReactNode {
 
           {/* Subtitle */}
           {/* prettier-ignore */}
-          <p className="text-xl text-foreground/70 max-w-4xl mx-aut o">
-            웹 시스템 구축 실무 경험을 바탕으로 <br />
-            빠르게 변화하는 프론트엔드 환경에 유연하게 대응합니다.
+          <p className="text-xl text-foreground/70 max-w-4xl mx-auto">
+            서비스 흐름과 사용자 경험을 기준으로 개발하는 프론트엔드 개발자입니다. <br />
+            화면 구현을 넘어, 실제로 사용되는 서비스를 만드는 데 집중합니다.
           </p>
 
           {/* CTA Buttons */}
