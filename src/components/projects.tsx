@@ -21,7 +21,7 @@ export function Projects(): React.ReactNode {
       image: "/mainhome.png",
       technologies: ["React", "TypeScript", "Tailwind CSS"],
       liveUrl: "https://bcm.u-jinlee1029.store/",
-      githubUrl: "https://github.com/kt-merge",
+      githubUrl: "https://github.com/kt-merge/bcm-front-repository",
     },
     {
       id: 2,
