@@ -1,45 +1,100 @@
-import { Project } from "@/types";
+import { Project } from '@/types'
 
 export const projects: Project[] = [
   {
-    id: "01",
-    label: "01 · 웹 앱",
-    title: "프로젝트 이름 A",
-    description: "짧은 설명이 들어갑니다. 어떤 문제를 해결했는지 한두 줄로.",
-    tags: [
-      { name: "React", variant: "blue" },
-      { name: "TypeScript", variant: "blue" },
-      { name: "Next.js" },
+    id: 1,
+    label: '01 · 웹 앱',
+    title: '프로젝트 이름 A',
+    description: '어떤 문제를 해결했는지 한두 줄로 설명합니다.',
+    overview: '프로젝트 전체 개요를 2~3문장으로 작성하세요. 어떤 서비스인지, 왜 만들었는지, 핵심 가치가 무엇인지 담으면 좋습니다.',
+    role: '프론트엔드 개발 전담 · UI 설계 · API 연동',
+    period: '2024.10 – 2024.12 (2개월)',
+    features: [
+      '로그인/회원가입 · JWT 인증',
+      '무한 스크롤 피드',
+      '실시간 알림 (SSE)',
+      '반응형 레이아웃',
     ],
+    trouble: 'SSE 연결 끊김 이슈 → 재연결 로직 구현으로 해결',
+    // 실제 스크린샷 경로로 교체 (public/ 폴더에 넣으면 됨)
+    images: [
+      { src: '/images/project-a-1.png', alt: '메인 화면' },
+      { src: '/images/project-a-2.png', alt: '피드 화면' },
+      { src: '/images/project-a-3.png', alt: '모바일 반응형' },
+    ],
+    tags: [
+      { name: 'React', color: 'blue' },
+      { name: 'TypeScript', color: 'blue' },
+      { name: 'Next.js' },
+    ],
+    github: 'https://github.com/yourname/project-a',
+    demo: 'https://project-a.vercel.app',
   },
   {
-    id: "02",
-    label: "02 · 풀스택",
-    title: "프로젝트 이름 B",
-    description: "짧은 설명이 들어갑니다. 어떤 문제를 해결했는지 한두 줄로.",
-    tags: [
-      { name: "Next.js", variant: "blue" },
-      { name: "Spring Boot", variant: "green" },
-      { name: "PostgreSQL" },
+    id: 2,
+    label: '02 · 풀스택',
+    title: '프로젝트 이름 B',
+    description: '풀스택으로 구성된 프로젝트. 프론트부터 백엔드까지 혼자 설계하고 구현했습니다.',
+    overview: '풀스택 프로젝트 상세 개요입니다. 백엔드 설계부터 프론트엔드 구현까지 전 과정을 직접 담당했습니다.',
+    role: '풀스택 개발 (프론트 70% / 백엔드 30%)',
+    period: '2025.01 – 2025.03 (3개월)',
+    features: [
+      'REST API 설계 · Spring Boot',
+      'React Query로 서버 상태 관리',
+      'PostgreSQL 스키마 설계',
+      'Vercel + Railway 배포',
     ],
+    trouble: 'N+1 쿼리 문제 → JPA fetch join으로 최적화',
+    images: [
+      { src: '/images/project-b-1.png', alt: '대시보드' },
+      { src: '/images/project-b-2.png', alt: 'API 구조도' },
+    ],
+    tags: [
+      { name: 'Next.js', color: 'blue' },
+      { name: 'Spring Boot', color: 'green' },
+      { name: 'PostgreSQL' },
+    ],
+    github: 'https://github.com/yourname/project-b',
   },
   {
-    id: "03",
-    label: "03 · 클론",
-    title: "프로젝트 이름 C",
-    description: "짧은 설명이 들어갑니다. 어떤 문제를 해결했는지 한두 줄로.",
-    tags: [
-      { name: "React", variant: "blue" },
-      { name: "Node.js", variant: "green" },
-      { name: "MongoDB" },
+    id: 3,
+    label: '03 · 클론',
+    title: '프로젝트 이름 C',
+    description: '특정 서비스를 클론하며 핵심 기능을 직접 구현해본 프로젝트입니다.',
+    overview: '클론 프로젝트 상세 개요. 어떤 서비스를 왜 클론했는지 설명하세요.',
+    role: '프론트엔드 · 백엔드 전담',
+    period: '2024.08 – 2024.09 (6주)',
+    features: [
+      '소셜 로그인 (OAuth2)',
+      '드래그 앤 드롭 UI',
+      'WebSocket 채팅',
     ],
+    tags: [
+      { name: 'React', color: 'blue' },
+      { name: 'Node.js', color: 'green' },
+      { name: 'MongoDB' },
+    ],
+    github: 'https://github.com/yourname/project-c',
+    demo: 'https://project-c.vercel.app',
   },
   {
-    id: "04",
-    label: "04 · 실무",
-    title: "ASP.NET 시절 작업",
-    description:
-      "C# 재직 당시 맡았던 주요 작업. 레거시 리팩토링, 성능 개선 등.",
-    tags: [{ name: "C#" }, { name: "ASP.NET" }, { name: "SQL Server" }],
+    id: 4,
+    label: '04 · 실무',
+    title: 'ASP.NET 시절 작업',
+    description: 'C# 재직 당시 맡았던 주요 작업. 레거시 리팩토링 및 성능 개선 경험.',
+    overview: '4년 8개월 재직하며 담당했던 주요 업무. 레거시 코드 리팩토링과 성능 최적화 작업을 중점적으로 맡았습니다.',
+    role: '풀스택 개발 (C# · ASP.NET · SQL Server)',
+    period: '2020 – 2024 (4년 8개월)',
+    features: [
+      '레거시 ASP.NET WebForms → MVC 마이그레이션',
+      'SQL 쿼리 튜닝으로 페이지 로딩 40% 개선',
+      '사내 공통 컴포넌트 라이브러리 구축',
+    ],
+    trouble: 'WebForms ViewState 비대화 → 부분 MVC 전환으로 해결',
+    tags: [
+      { name: 'C#' },
+      { name: 'ASP.NET' },
+      { name: 'SQL Server' },
+    ],
   },
-];
+]

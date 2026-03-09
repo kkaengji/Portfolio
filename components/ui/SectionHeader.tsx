@@ -1,13 +1,13 @@
 interface SectionHeaderProps {
-  command: string;
-  title: string;
+  cmd: string
+  title: string
 }
 
-export default function SectionHeader({ command, title }: SectionHeaderProps) {
+export default function SectionHeader({ cmd, title }: SectionHeaderProps) {
   return (
     <div className="section-header">
-      <span className="section-cmd">$ {command}</span>
-      <span className="section-title">{title}</span>
+      <span className="section-cmd">{cmd}</span>
+      <h2 className="section-title">{title}</h2>
     </div>
-  );
+  )
 }

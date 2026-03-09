@@ -1,30 +1,30 @@
-"use client";
+import { useState, useEffect, useRef } from 'react'
 
-import { useState, useEffect } from "react";
-
-export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState("intro");
+export function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState(ids[0])
+  const idsRef = useRef(ids)
+  idsRef.current = ids
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
+    const getActive = () => {
+      const scrollY = window.scrollY
+      const viewportMid = scrollY + window.innerHeight / 3
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.4 },
-    );
+      let current = idsRef.current[0]
+      for (const id of idsRef.current) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        if (el.offsetTop <= viewportMid) {
+          current = id
+        }
+      }
+      setActive(current)
+    }
 
-    sections.forEach((section) => observer.observe(section));
+    getActive()
+    window.addEventListener('scroll', getActive, { passive: true })
+    return () => window.removeEventListener('scroll', getActive)
+  }, [])
 
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
-  }, []);
-
-  return activeSection;
+  return active
 }

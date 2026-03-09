@@ -1,42 +1,37 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, DM_Sans } from "next/font/google";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { SidebarProvider } from "@/contexts/SidebarContext";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  variable: "--font-mono",
   weight: ["300", "400", "500", "700"],
-  style: ["normal", "italic"],
 });
 
 const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
   subsets: ["latin"],
+  variable: "--font-sans",
   weight: ["300", "400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Dev Terminal",
-  description: "남경진 · Frontend Developer (Fullstack 지향)",
+  title: "남경진 · Frontend Developer",
+  description: "C# 4.8년 경력 보유 · 프론트엔드 개발자 포트폴리오",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="ko">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-      </head>
       <body className={`${jetbrainsMono.variable} ${dmSans.variable}`}>
-        {children}
+        <ThemeProvider>
+          <SidebarProvider>{children}</SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

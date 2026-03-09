@@ -1,23 +1,19 @@
-import { ReactNode } from "react";
-
 interface TerminalWindowProps {
-  title?: string;
-  children: ReactNode;
+  title?: string
+  children: React.ReactNode
+  className?: string
 }
 
-export default function TerminalWindow({
-  title = "zsh — portfolio — 80×24",
-  children,
-}: TerminalWindowProps) {
+export default function TerminalWindow({ title = 'zsh', children, className = '' }: TerminalWindowProps) {
   return (
-    <div className="terminal">
+    <div className={`terminal-window ${className}`}>
       <div className="terminal-bar">
-        <div className="dot dot-r"></div>
-        <div className="dot dot-y"></div>
-        <div className="dot dot-g"></div>
-        <div className="terminal-title">{title}</div>
+        <span className="dot dot-r" />
+        <span className="dot dot-y" />
+        <span className="dot dot-g" />
+        <span className="terminal-title">{title}</span>
       </div>
       <div className="terminal-body">{children}</div>
     </div>
-  );
+  )
 }

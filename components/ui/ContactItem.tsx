@@ -1,17 +1,18 @@
-import { ContactItem as ContactItemType } from "@/types";
-
 interface ContactItemProps {
-  contact: ContactItemType;
+  icon: string
+  label: string
+  value: string
+  href: string
 }
 
-export default function ContactItem({ contact }: ContactItemProps) {
+export default function ContactItem({ icon, label, value, href }: ContactItemProps) {
   return (
-    <a href={contact.href} className="contact-item">
-      <span className="contact-icon">{contact.icon}</span>
+    <a href={href} className="contact-item" target="_blank" rel="noopener noreferrer">
+      <span className="contact-icon">{icon}</span>
       <div>
-        <div className="contact-label">{contact.label}</div>
-        <div className="contact-value">{contact.value}</div>
+        <div className="contact-label">{label}</div>
+        <div className="contact-value">{value}</div>
       </div>
     </a>
-  );
+  )
 }

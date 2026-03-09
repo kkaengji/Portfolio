@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 포트폴리오 — Next.js + TypeScript
 
-## Getting Started
-
-First, run the development server:
+## 시작하기
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 에서 확인
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 기능
 
-## Learn More
+- 🖥️ 라이트 터미널 컨셉 UI
+- 🌙 다크모드 토글 (시스템 설정 자동 감지)
+- 📋 프로젝트 카드 → 모달 상세보기
+- 🌿 GitHub 잔디 연동 (contributions graph)
+- ⌨️ 인터랙티브 터미널 (실제 타이핑 가능)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## GitHub 잔디 실제 연동 방법
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. https://github.com/settings/tokens 에서 토큰 발급 (read:user 권한)
+2. `.env.local` 파일 생성:
 
-## Deploy on Vercel
+```
+GITHUB_TOKEN=ghp_your_token_here
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. `components/ui/GitHubContrib.tsx` 에서 mock 데이터 부분을 API 호출로 교체:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```ts
+useEffect(() => {
+  fetch(`/api/github?username=${username}`)
+    .then(r => r.json())
+    .then(data => {
+      setDays(data.days)
+      setTotal(data.total)
+      setLoading(false)
+    })
+}, [username])
+```
+
+4. Vercel 배포 시 환경변수에 `GITHUB_TOKEN` 추가
+
+---
+
+## 인터랙티브 터미널 커맨드
+
+| 커맨드 | 설명 |
+|--------|------|
+| `help` | 도움말 |
+| `whoami` | 개발자 정보 |
+| `ls projects` | 프로젝트 목록 |
+| `open <번호>` | 프로젝트 모달 오픈 |
+| `cat skills` | 스킬 목록 |
+| `cat about` | 소개 |
+| `contact` | 연락처 |
+| `theme` | 다크/라이트 전환 |
+| `clear` | 터미널 초기화 |
+| `↑ / ↓` | 커맨드 히스토리 |
+
+---
+
+## 커스터마이징
+
+| 파일 | 수정 내용 |
+|------|----------|
+| `data/projects.ts` | 프로젝트 추가/수정 |
+| `data/skills.ts` | 스킬 레벨 조정 |
+| `components/ui/GitHubContrib.tsx` | username 변경 |
+| `components/layout/Sidebar.tsx` | 이름, 링크 |
+| `components/sections/ContactSection.tsx` | 연락처 |
+| `app/globals.css` `:root` | 색상 전체 변경 |
+
+## 배포 (Vercel)
+
+```bash
+npm install -g vercel
+vercel
+```
+
+환경변수 `GITHUB_TOKEN` 추가 후 배포하면 실제 잔디 연동됨.
