@@ -6,19 +6,19 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useSidebar } from "@/contexts/SidebarContext";
 import { author } from "@/data/author";
 
-// 접혔을 때 보여줄 아이콘 (유니코드 심볼)
+// 터미널 프롬프트 스타일 아이콘
 const NAV_ITEMS = [
-  { href: "#intro", label: "whoami", icon: "⌘", collapsedIcon: "⌘" },
-  { href: "#about", label: "about.md", icon: "◉", collapsedIcon: "◉" },
-  { href: "#projects", label: "projects/", icon: "▦", collapsedIcon: "▦" },
-  { href: "#skills", label: "skills.json", icon: "◈", collapsedIcon: "◈" },
-  { href: "#github", label: "github.log", icon: "⌥", collapsedIcon: "⌥" },
-  { href: "#contact", label: "contact.sh", icon: "✦", collapsedIcon: "✦" },
+  { href: "#intro", label: "whoami", icon: ">", collapsedIcon: ">" },
+  { href: "#about", label: "about.md", icon: "#", collapsedIcon: "#" },
+  { href: "#projects", label: "projects/", icon: "$", collapsedIcon: "$" },
+  { href: "#skills", label: "skills.json", icon: "~", collapsedIcon: "~" },
+  { href: "#github", label: "github.log", icon: "*", collapsedIcon: "*" },
+  { href: "#contact", label: "contact.sh", icon: "@", collapsedIcon: "@" },
 ];
 
 const EXT_ITEMS = [
-  { href: author.github, label: "GitHub", icon: "⎋" },
-  { href: author.linkedin, label: "LinkedIn", icon: "⎋" },
+  { href: author.github, label: "GitHub", icon: "→" },
+  { href: author.linkedin, label: "velog", icon: "→" },
   { href: author.resume, label: "Resume.pdf", icon: "↓" },
 ];
 

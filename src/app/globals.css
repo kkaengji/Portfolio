@@ -610,8 +610,8 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   width: 100%;
-  max-width: 600px;
-  max-height: 85vh;
+  max-width: 900px;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1105,14 +1105,20 @@ body {
 .modal-img-wrap {
   position: relative;
   background: var(--bg2);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
+  min-height: 220px;
+  max-height: min(52vh, 520px);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
   transition: opacity 0.2s ease;
 }
@@ -1224,6 +1230,11 @@ body {
   gap: 6px;
   margin-top: 6px;
   font-family: var(--font-mono);
+}
+
+.modal-top-info .modal-meta-role {
+  white-space: pre-line;
+  align-items: flex-start;
 }
 
 .modal-links-inline {
