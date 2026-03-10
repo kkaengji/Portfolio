@@ -26,10 +26,6 @@
   --contrib-4: #216e39;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -52,15 +48,22 @@ body {
 }
 
 .main {
-  padding: 52px 72px 240px;
+  padding: 52px 72px calc(100vh - 150px);
   max-width: 1020px; /* 콘텐츠 폭 제한 */
   width: 100%;
   margin: 0 auto; /* 남는 공간 가운데 */
+  transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout.sidebar-collapsed .main {
+  margin-left: calc((100vw - 60px - 1020px) / 2 + 110px);
+  margin-right: auto;
 }
 
 /* Section 간격 */
 .section {
   margin-bottom: 72px;
+  scroll-margin-top: 32px;
 }
 
 /* Sidebar */

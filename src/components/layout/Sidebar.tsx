@@ -33,6 +33,19 @@ export default function Sidebar() {
   ]);
   const { collapsed, toggle } = useSidebar();
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    e.preventDefault();
+    const id = href.slice(1);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", href);
+    }
+  };
+
   return (
     <aside className={collapsed ? "sidebar sidebar-collapsed" : "sidebar"}>
       {/* 헤더 */}
@@ -67,6 +80,7 @@ export default function Sidebar() {
               "nav-item" + (active === item.href.slice(1) ? " active" : "")
             }
             title={item.label}
+            onClick={(e) => handleNavClick(e, item.href)}
           >
             <span className="nav-icon">
               {collapsed ? item.collapsedIcon : item.icon}
