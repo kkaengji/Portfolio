@@ -70,7 +70,7 @@ export default function IntroSection() {
 
   // 타이핑 완료되면 인풋에 포커스
   useEffect(() => {
-    if (done) inputRef.current?.focus();
+    if (done) inputRef.current?.focus({ preventScroll: true });
   }, [done]);
 
   // 커맨드 출력될 때마다 터미널 바디 맨 아래로 스크롤

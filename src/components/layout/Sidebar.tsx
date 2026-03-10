@@ -18,7 +18,7 @@ const NAV_ITEMS = [
 
 const EXT_ITEMS = [
   { href: author.github, label: "GitHub", icon: "→" },
-  { href: author.linkedin, label: "velog", icon: "→" },
+  { href: author.velog, label: "velog", icon: "→" },
   { href: author.resume, label: "Resume.pdf", icon: "↓" },
 ];
 

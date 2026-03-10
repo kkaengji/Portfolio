@@ -23,8 +23,8 @@ export const SKILLS_TEXT = `Frontend:  React      ████████░░
            HTML/CSS   █████████░  90%
 
 Backend:   C#/ASP.NET █████████░  90%  (실무 4.8년)
-           Spring Boot██░░░░░░░░  20%
-           Node.js    █░░░░░░░░░  15%`;
+           MSSQL      ████████░░  85%
+           Spring Boot███░░░░░░░  30%`;
 
 export const ABOUT_TEXT = `C# / ASP.NET으로 4년 8개월간 실무를 경험하며
 프론트부터 백엔드까지 구분 없이 개발했습니다.

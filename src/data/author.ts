@@ -4,7 +4,6 @@ export const author = {
   github: "https://github.com/kkaengji",
   githubUsername: "kkaengji",
   velog: "https://velog.io/@kkaengji/posts",
-  linkedin: "https://linkedin.com/in/",
   resume: "/resume.pdf",
   /** 터미널 프롬프트에 표시되는 이름 */
   terminalUser: "Namdev",

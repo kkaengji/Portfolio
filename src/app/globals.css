@@ -1123,6 +1123,21 @@ body {
   transition: opacity 0.2s ease;
 }
 
+.modal-img-hint {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: rgba(0, 0, 0, 0.58);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  font-size: 11px;
+  padding: 5px 10px;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 2;
+}
+
 .gallery-btn {
   position: absolute;
   top: 50%;
@@ -1249,6 +1264,13 @@ body {
   .modal-top {
     grid-template-columns: 1fr;
   }
+
+  .image-expanded-help {
+    font-size: 11px;
+    white-space: normal;
+    text-align: center;
+    width: min(88vw, 320px);
+  }
 }
 
 /* ═══════════════════════════════════════
@@ -1264,4 +1286,139 @@ body {
 .sidebar-bottom-collapsed {
   justify-content: center;
   padding: 10px 0;
+}
+
+/* ═══════════════════════════════════════
+   EXPANDED IMAGE LIGHTBOX
+═══════════════════════════════════════ */
+.image-expanded-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.15s ease;
+}
+
+.image-expanded-container {
+  position: relative;
+  max-width: min(96vw, 1400px);
+  max-height: 90vh;
+  width: 100%;
+  padding: 0 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.image-expanded {
+  max-width: 100%;
+  max-height: 86vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+.image-expanded-counter {
+  position: absolute;
+  top: -44px;
+  left: 0;
+  color: #fff;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.image-expanded-help {
+  position: absolute;
+  bottom: -42px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.image-expanded-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.15s ease,
+    background 0.15s ease;
+  z-index: 103;
+}
+
+.image-expanded-close:hover {
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.image-expanded-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+  backdrop-filter: blur(4px);
+}
+
+.image-expanded-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.image-expanded-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.image-expanded-btn-l {
+  left: 12px;
+}
+
+.image-expanded-btn-r {
+  right: 12px;
+}
+
+@media (max-width: 768px) {
+  .image-expanded-container {
+    padding: 0 56px;
+  }
+
+  .image-expanded-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
 }

@@ -10,15 +10,37 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [imgIdx, setImgIdx] = useState(0);
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") setImgIdx((i) => Math.max(i - 1, 0));
-      if (e.key === "ArrowRight")
-        setImgIdx((i) => Math.min(i + 1, (project.images?.length ?? 1) - 1));
+      if (e.key === "Escape") {
+        if (expandedIdx !== null) {
+          setExpandedIdx(null);
+        } else {
+          onClose();
+        }
+      }
+      if (e.key === "ArrowLeft") {
+        if (expandedIdx !== null) {
+          setExpandedIdx((i) => (i === null ? null : Math.max(i - 1, 0)));
+        } else {
+          setImgIdx((i) => Math.max(i - 1, 0));
+        }
+      }
+      if (e.key === "ArrowRight") {
+        if (expandedIdx !== null) {
+          setExpandedIdx((i) =>
+            i === null
+              ? null
+              : Math.min(i + 1, (project.images?.length ?? 1) - 1),
+          );
+        } else {
+          setImgIdx((i) => Math.min(i + 1, (project.images?.length ?? 1) - 1));
+        }
+      }
     },
-    [onClose, project.images],
+    [onClose, project.images, expandedIdx],
   );
 
   useEffect(() => {
@@ -65,11 +87,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             {images.length > 0 && (
               <div className="modal-gallery">
                 <div className="modal-img-wrap">
+                  <div className="modal-img-hint">확대 보기</div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={images[imgIdx].src}
                     alt={images[imgIdx].alt}
                     className="modal-img"
+                    onClick={() => setExpandedIdx(imgIdx)}
+                    style={{ cursor: "pointer" }}
+                    title="클릭하여 확대"
                   />
                   {images.length > 1 && (
                     <>
@@ -214,6 +240,67 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           )}
         </div>
       </div>
+
+      {/* 확대 이미지 뷰 */}
+      {expandedIdx !== null && (
+        <div
+          className="image-expanded-backdrop"
+          onClick={() => setExpandedIdx(null)}
+        >
+          <div
+            className="image-expanded-container"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {images.length > 1 && (
+              <div className="image-expanded-counter">
+                {expandedIdx + 1} / {images.length}
+              </div>
+            )}
+            <div className="image-expanded-help">
+              좌/우 버튼 또는 방향키로 넘기기
+            </div>
+            <button
+              className="image-expanded-close"
+              onClick={() => setExpandedIdx(null)}
+              aria-label="닫기"
+            >
+              ✕
+            </button>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={images[expandedIdx].src}
+              alt={images[expandedIdx].alt}
+              className="image-expanded"
+            />
+            {images.length > 1 && (
+              <>
+                <button
+                  className="image-expanded-btn image-expanded-btn-l"
+                  onClick={() =>
+                    setExpandedIdx((i) =>
+                      i === null ? null : Math.max(i - 1, 0),
+                    )
+                  }
+                  disabled={expandedIdx === 0}
+                >
+                  ‹
+                </button>
+                <button
+                  className="image-expanded-btn image-expanded-btn-r"
+                  onClick={() =>
+                    setExpandedIdx((i) =>
+                      i === null ? null : Math.min(i + 1, images.length - 1),
+                    )
+                  }
+                  disabled={expandedIdx === images.length - 1}
+                >
+                  ›
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
