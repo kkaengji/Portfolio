@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useSidebar } from "@/contexts/SidebarContext";
+import { author } from "@/data/author";
 
 // 접혔을 때 보여줄 아이콘 (유니코드 심볼)
 const NAV_ITEMS = [
@@ -16,9 +17,9 @@ const NAV_ITEMS = [
 ];
 
 const EXT_ITEMS = [
-  { href: "https://github.com/yourname", label: "GitHub", icon: "⎋" },
-  { href: "#", label: "LinkedIn", icon: "⎋" },
-  { href: "/resume.pdf", label: "Resume.pdf", icon: "↓" },
+  { href: author.github, label: "GitHub", icon: "⎋" },
+  { href: author.linkedin, label: "LinkedIn", icon: "⎋" },
+  { href: author.resume, label: "Resume.pdf", icon: "↓" },
 ];
 
 export default function Sidebar() {

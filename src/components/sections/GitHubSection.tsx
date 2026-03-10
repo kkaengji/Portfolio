@@ -1,5 +1,6 @@
-import GitHubContrib from '@/components/ui/GitHubContrib'
-import SectionHeader from '@/components/ui/SectionHeader'
+import GitHubContrib from "@/components/ui/GitHubContrib";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { author } from "@/data/author";
 
 export default function GitHubSection() {
   return (
@@ -13,9 +14,9 @@ export default function GitHubSection() {
           <span className="terminal-title">github contributions</span>
         </div>
         <div className="terminal-body">
-          <GitHubContrib username="yourname" />
+          <GitHubContrib username={author.githubUsername} />
         </div>
       </div>
     </section>
-  )
+  );
 }

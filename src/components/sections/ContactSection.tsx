@@ -1,30 +1,31 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 import ContactItem from "@/components/ui/ContactItem";
+import { author } from "@/data/author";
 
 const CONTACTS = [
   {
     icon: "✉",
     label: "Email",
-    value: "nkj960425@naver.com",
-    href: "mailto:nkj960425@naver.com",
+    value: author.email,
+    href: `mailto:${author.email}`,
   },
   {
     icon: "⌥",
     label: "GitHub",
-    value: "github.com/kkaengji",
-    href: "https://github.com/kkaengji",
+    value: author.github.replace("https://", ""),
+    href: author.github,
   },
   {
     icon: "v",
     label: "velog",
-    value: "velog.io/@kkaengji",
-    href: "https://velog.io/@kkaengji/posts",
+    value: author.velog.replace("https://", ""),
+    href: author.velog,
   },
   {
     icon: "↓",
     label: "Resume",
     value: "이력서 다운로드 (.pdf)",
-    href: "/resume.pdf",
+    href: author.resume,
   },
 ];
 

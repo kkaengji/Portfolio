@@ -5,6 +5,13 @@ import { useTypingEffect } from "@/hooks/useTypingEffect";
 import Cursor from "@/components/terminal/Cursor";
 import ProjectModal from "@/components/ui/ProjectModal";
 import { projects } from "@/data/projects";
+import { author } from "@/data/author";
+import {
+  HELP_TEXT,
+  SKILLS_TEXT,
+  ABOUT_TEXT,
+  CONTACT_TEXT,
+} from "@/data/terminalTexts";
 import { Project } from "@/types";
 
 type LineType = "cmd" | "output" | "blank" | "year" | "year-red" | "year-green";
@@ -32,34 +39,6 @@ const SCRIPT: ScriptLine[] = [
 const LINES = SCRIPT.map((s) => s.text);
 
 // 인터랙티브 커맨드
-const HELP_TEXT = `사용 가능한 커맨드:
-  help           이 도움말
-  ls projects    프로젝트 목록
-  open <번호>     프로젝트 상세보기
-  cat skills     스킬 목록
-  cat about      소개
-  contact        연락처
-  theme          다크/라이트 전환
-  clear          초기화`;
-
-const SKILLS_TEXT = `Frontend:  React      ████████░░  80%
-           Next.js    ████████░░  80%
-           TypeScript ███████░░░  75%
-           HTML/CSS   █████████░  90%
-
-Backend:   C#/ASP.NET █████████░  90%  (실무 4.8년)
-           Spring Boot██░░░░░░░░  20%
-           Node.js    █░░░░░░░░░  15%`;
-
-const ABOUT_TEXT = `C# / ASP.NET으로 4년 8개월간 실무를 경험하며
-프론트부터 백엔드까지 구분 없이 개발했습니다.
-
-직접 사용자 화면을 만들고 반응을 볼 때 가장
-재미있다는 걸 깨닫고 프론트엔드로 방향을 잡았습니다.`;
-
-const CONTACT_TEXT = `Email:    your@email.com
-GitHub:   github.com/yourname
-LinkedIn: linkedin.com/in/yourname`;
 
 interface ItEntry {
   type: "input" | "output" | "error" | "blank";
@@ -69,9 +48,9 @@ interface ItEntry {
 function PromptSpan() {
   return (
     <span className="prompt">
-      <span className="prompt-user">Namdev</span>
+      <span className="prompt-user">{author.terminalUser}</span>
       <span className="prompt-at">@</span>
-      <span className="prompt-host">portfolio</span>
+      <span className="prompt-host">{author.terminalHost}</span>
       <span className="prompt-at">:</span>
       <span className="prompt-path">~</span>
       <span className="prompt-sym">$ </span>
