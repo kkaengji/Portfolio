@@ -214,7 +214,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
 
           {/* 링크 버튼 — 하단 원위치 */}
-          {(project.github || project.demo) && (
+          {(project.github || project.demo || project.video) && (
             <div className="modal-links">
               {project.github && (
                 <a
@@ -234,6 +234,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   className="modal-link accent"
                 >
                   <span className="modal-link-icon">◈</span> 데모 보기 ↗
+                </a>
+              )}
+              {project.video && (
+                <a
+                  href={project.video}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="modal-link"
+                >
+                  <span className="modal-link-icon">▶</span> 시연 영상 보기 ↗
                 </a>
               )}
             </div>

@@ -48,7 +48,7 @@ body {
 }
 
 .main {
-  padding: 52px 72px calc(100vh - 150px);
+  padding: 52px 72px 52px;
   max-width: 1020px; /* 콘텐츠 폭 제한 */
   width: 100%;
   margin: 0 auto; /* 남는 공간 가운데 */
@@ -288,11 +288,16 @@ body {
 
 /* intro 터미널은 높이 제한 + 스크롤 */
 #intro .terminal-window .terminal-body {
-  min-height: 260px;
-  max-height: 480px;
+  height: 420px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
+}
+
+@media (max-width: 768px) {
+  #intro .terminal-window .terminal-body {
+    height: 360px;
+  }
 }
 #intro .terminal-window .terminal-body::-webkit-scrollbar {
   width: 4px;
@@ -438,6 +443,7 @@ body {
   color: var(--muted);
   line-height: 1.5;
   font-family: var(--font-sans);
+  white-space: pre-line;
 }
 .card-tags {
   display: flex;
@@ -561,6 +567,45 @@ body {
   font-size: 12.5px;
   font-weight: 500;
   font-family: var(--font-sans);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.site-footer-main {
+  margin-bottom: 4px;
+}
+
+.site-footer-main strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.site-footer-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-footer-sub a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.site-footer-sub a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.footer-dot {
+  color: var(--border);
 }
 
 /* Responsive */

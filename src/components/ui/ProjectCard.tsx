@@ -35,7 +35,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           </span>
         ))}
       </div>
-      {(project.github || project.demo) && (
+      {(project.github || project.demo || project.video) && (
         <div className="card-links" onClick={(e) => e.stopPropagation()}>
           {project.github && (
             <a
@@ -55,6 +55,16 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               className="card-link accent"
             >
               Demo ↗
+            </a>
+          )}
+          {project.video && (
+            <a
+              href={project.video}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-link"
+            >
+              Video ▶
             </a>
           )}
         </div>

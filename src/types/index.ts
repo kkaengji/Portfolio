@@ -24,7 +24,8 @@ export type Project = {
   images?: ProjectImage[]; // 스크린샷
   tags: Tag[];
   github?: string;
-  demo?: string;
+  demo?: string; // 배포된 사이트
+  video?: string; // 시연 영상
 };
 
 export type Skill = {
