@@ -121,7 +121,7 @@ export default function Sidebar() {
           <div className="sidebar-status">
             <span className="status-dot" />
             <span className="status-available">구직 중</span>
-            <span className="status-year"> · 2025</span>
+            <span className="status-year"> · 2026</span>
           </div>
         )}
         <ThemeToggle />
