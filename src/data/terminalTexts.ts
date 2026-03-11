@@ -17,10 +17,10 @@ export const WHOAMI_TEXT = `${author.name} (${author.terminalUser})
 현재:    React · Next.js · TypeScript 학습 중
 상태:    구직 중 ✓`;
 
-export const SKILLS_TEXT = `Frontend:  React      ████████░░  80%
-           Next.js    ████████░░  80%
-           TypeScript ███████░░░  75%
-           HTML/CSS   █████████░  90%
+export const SKILLS_TEXT = `Frontend:  React      ███████░░░  70%
+           Next.js    ████████░░  70%
+           TypeScript ███████░░░  60%
+           HTML/CSS   █████████░  85%
 
 Backend:   C#/ASP.NET █████████░  90%  (실무 4.8년)
            MSSQL      ████████░░  85%
