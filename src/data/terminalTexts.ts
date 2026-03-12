@@ -1,39 +1,41 @@
 import { author } from "@/data/author";
 
-export const HELP_TEXT = `사용 가능한 커맨드:
-  help              이 도움말 표시
-  whoami            개발자 정보
-  ls projects       프로젝트 목록
-  open <번호>        프로젝트 상세보기 (예: open 1)
-  cat skills        스킬 목록
-  cat about         소개
-  contact           연락처
-  clear             터미널 초기화
-  theme             다크/라이트 모드 전환`;
+export const MENU_TEXT = `포트폴리오 터미널 v1.0.0
+
+  [1] whoami     개발자 정보
+  [2] projects   프로젝트 목록
+  [3] skills     기술 스택
+  [4] about      소개
+  [5] contact    연락처
+  [6] theme      다크/라이트 전환
+
+숫자 또는 커맨드를 입력하세요`;
+
+export const HELP_TEXT = MENU_TEXT;
 
 export const WHOAMI_TEXT = `${author.name} (${author.terminalUser})
 역할:    Frontend Developer (Fullstack 지향)
-경력:    C# / ASP.NET 4년 8개월
-현재:    React · Next.js · TypeScript 학습 중
+경력:    C# ASP.NET 4년 8개월
+현재:    React · Next.js · TypeScript
 상태:    구직 중 ✓`;
 
-export const SKILLS_TEXT = `Frontend:  React      ███████░░░  70%
-           Next.js    ████████░░  70%
-           TypeScript ███████░░░  60%
-           HTML/CSS   █████████░  85%
+export const SKILLS_TEXT = `Frontend:   React / Next.js
+            TypeScript
+            HTML / CSS
 
-Backend:   C#/ASP.NET █████████░  90%  (실무 4.8년)
-           MSSQL      ████████░░  85%
-           Spring Boot███░░░░░░░  30%`;
+Backend:    C# / ASP.NET  (실무 4년 8개월)
+            MSSQL / MySQL
 
-export const ABOUT_TEXT = `C# / ASP.NET으로 4년 8개월간 실무를 경험하며
-프론트부터 백엔드까지 구분 없이 개발했습니다.
+기타:       Spring Boot
+            Copilot · Claude · v0`;
 
-직접 사용자 화면을 만들고 반응을 볼 때 가장
-재미있다는 걸 깨닫고 프론트엔드로 방향을 잡았습니다.
+export const ABOUT_TEXT = `C# / ASP.NET으로 4년 8개월간 DB 설계·SP 작성부터
+화면 구현까지 전체 흐름을 직접 다뤘습니다.
 
-백엔드 경험이 있어 API 구조와 DB 흐름을
-이해하는 프론트엔드 개발이 강점입니다.`;
+그 경험 위에서 화면을 만들 때 가장 재미있다는 걸
+깨닫고 프론트엔드 개발자로 방향을 잡았습니다.
+
+DB~화면 전체를 이해하는 프론트엔드가 강점입니다.`;
 
 export const CONTACT_TEXT = `Email:    ${author.email}
 GitHub:   ${author.github.replace("https://", "")}

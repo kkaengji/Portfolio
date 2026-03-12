@@ -1,6 +1,6 @@
-import TerminalWindow from '@/components/terminal/TerminalWindow'
-import TerminalLine from '@/components/terminal/TerminalLine'
-import SectionHeader from '@/components/ui/SectionHeader'
+import TerminalWindow from "@/components/terminal/TerminalWindow";
+import TerminalLine from "@/components/terminal/TerminalLine";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function AboutSection() {
   return (
@@ -9,26 +9,46 @@ export default function AboutSection() {
       <TerminalWindow title="about.md">
         <TerminalLine isOutput>
           <p className="out-muted">
-            C# / ASP.NET으로 <span className="out-highlight">4년 8개월</span>간 실무를 경험하며<br />
-            프론트부터 백엔드까지 구분 없이 개발했습니다.<br />
-            직접 사용자 화면을 만들고 반응을 볼 때 가장 재미있다는 걸 깨닫고<br />
-            <span className="out-green">프론트엔드 개발자</span>로 방향을 잡았습니다.
+            C# / ASP.NET으로 <span className="out-highlight">4년 8개월</span>간
+            <br />
+            DB 설계·Stored Procedure 작성부터 화면 구현까지
+            <br />
+            중간 레이어 없이 전체 흐름을 직접 다뤘습니다.
+            <br />
+            그 경험 위에서 화면을 만들 때 가장 재미있다는 걸 깨닫고
+            <br />
+            <span className="out-green">프론트엔드 개발자</span>로 방향을
+            잡았습니다.
           </p>
         </TerminalLine>
         <div className="blank" />
         <TerminalLine isOutput>
-          <span className="out-yellow"># 강점</span>
+          <span className="out-yellow"># 경력이 만든 차이</span>
         </TerminalLine>
         <TerminalLine isOutput>
-          <span className="out-muted">· 백엔드 경험으로 API 구조·DB 흐름을 이해하는 프론트엔드 개발</span>
+          <span className="out-muted">
+            · DB~화면 전체 흐름 경험 → 데이터가 어디서 어떻게 오는지 알고 화면
+            설계
+          </span>
         </TerminalLine>
         <TerminalLine isOutput>
-          <span className="out-muted">· 레거시 .NET 환경에서 단련된 문제 해결력 + 빠른 컨텍스트 파악</span>
+          <span className="out-muted">
+            · 운영 환경 경험 → 납품·운영 중 실제 장애 대응으로 단련된 문제
+            해결력
+          </span>
         </TerminalLine>
         <TerminalLine isOutput>
-          <span className="out-muted">· 풀스택 학습 중: Spring Boot · Node.js 기초 보유</span>
+          <span className="out-muted">
+            · 백엔드 코드 리딩 가능 → DB 구조 파악·병목 원인 추적이 빠름
+          </span>
+        </TerminalLine>
+        <TerminalLine isOutput>
+          <span className="out-muted">
+            · AI 도구 활용 → 코딩(Copilot·Claude) / 설계·문서(ChatGPT·Gemini) /
+            UI 프로토(v0){" "}
+          </span>
         </TerminalLine>
       </TerminalWindow>
     </section>
-  )
+  );
 }

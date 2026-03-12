@@ -167,7 +167,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <div className="modal-section-label">
                 <span className="out-yellow">#</span> 개요
               </div>
-              <p className="modal-text">{project.overview}</p>
+              <div className="modal-overview">
+                {project.overview.split("\n\n").map((para, i) => (
+                  <p key={i} className="modal-text">{para}</p>
+                ))}
+              </div>
             </div>
           )}
 
@@ -177,11 +181,25 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <span className="out-yellow">#</span> 주요 기능
               </div>
               <ul className="modal-feature-list">
-                {project.features.map((f, i) => (
-                  <li key={i} className="modal-feature-item">
-                    <span className="out-green">›</span> {f}
-                  </li>
-                ))}
+                {project.features.map((f, i) => {
+                  const [title, ...rest] = f.split(" — ");
+                  const desc = rest.join(" — ");
+                  return (
+                    <li key={i} className="modal-feature-item">
+                      <span className="out-green" style={{ flexShrink: 0 }}>›</span>
+                      <span>
+                        {desc ? (
+                          <>
+                            <span className="modal-feature-title">{title}</span>
+                            <span className="modal-feature-desc"> — {desc}</span>
+                          </>
+                        ) : (
+                          <span className="modal-feature-title">{title}</span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}

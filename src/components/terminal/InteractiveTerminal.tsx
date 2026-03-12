@@ -4,12 +4,14 @@ import { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { projects } from "@/data/projects";
 import { author } from "@/data/author";
 import {
-  HELP_TEXT,
+  MENU_TEXT,
   WHOAMI_TEXT,
   SKILLS_TEXT,
   ABOUT_TEXT,
   CONTACT_TEXT,
 } from "@/data/terminalTexts";
+
+type Mode = "main" | "projects";
 
 interface TerminalEntry {
   type: "input" | "output" | "error" | "blank";
@@ -18,27 +20,26 @@ interface TerminalEntry {
 
 interface InteractiveTerminalProps {
   onOpenProject?: (id: number) => void;
-  embedded?: boolean; // true면 터미널 껍데기 없이 인라인 렌더
+  embedded?: boolean;
 }
 
 export default function InteractiveTerminal({
   onOpenProject,
   embedded = false,
 }: InteractiveTerminalProps) {
+  const [errIdx, setErrIdx] = useState(0);
   const [history, setHistory] = useState<TerminalEntry[]>(
     embedded
       ? []
       : [
-          {
-            type: "output",
-            content: "포트폴리오 터미널 v1.0.0 — 'help'를 입력해보세요",
-          },
+          { type: "output", content: MENU_TEXT },
           { type: "blank", content: "" },
         ],
   );
   const [input, setInput] = useState("");
   const [cmdHistory, setCmdHistory] = useState<string[]>([]);
   const [histIdx, setHistIdx] = useState(-1);
+  const [mode, setMode] = useState<Mode>("main");
   const inputRef = useRef<HTMLInputElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -51,41 +52,79 @@ export default function InteractiveTerminal({
   };
 
   const runCommand = (raw: string) => {
-    const cmd = raw.trim().toLowerCase();
+    const trimmed = raw.trim();
     push([{ type: "input", content: raw }]);
-    if (!cmd) return;
+    if (!trimmed) return;
 
     setCmdHistory((prev) => [raw, ...prev]);
     setHistIdx(-1);
 
-    if (cmd === "clear") {
-      setHistory([]);
+    let cmd = trimmed.toLowerCase();
+
+    // projects 모드: a/b/c/d → 열기, q → 메뉴로
+    if (mode === "projects") {
+      if (cmd === "q" || cmd === "quit" || cmd === "back") {
+        setMode("main");
+        push([{ type: "output", content: MENU_TEXT }, { type: "blank", content: "" }]);
+        return;
+      }
+      const letters = ["a", "b", "c", "d"];
+      const idx = letters.indexOf(cmd);
+      if (idx !== -1) {
+        const project = projects[idx];
+        if (project) {
+          push([{ type: "output", content: `opening ${project.title}...` }, { type: "blank", content: "" }]);
+          setMode("main");
+          onOpenProject?.(project.id);
+          return;
+        }
+      }
+      push([{ type: "error", content: `'${cmd}'은(는) 없는 항목입니다.` }, { type: "blank", content: "" }]);
       return;
     }
 
-    if (cmd === "help") {
-      push([
-        { type: "output", content: HELP_TEXT },
-        { type: "blank", content: "" },
-      ]);
+    // main 모드: 숫자 → 커맨드 매핑
+    if (mode === "main") {
+      const numMap: Record<string, string> = {
+        "1": "whoami",
+        "2": "ls",
+        "3": "cat skills",
+        "4": "cat about",
+        "5": "contact",
+        "6": "theme",
+      };
+      if (numMap[cmd]) cmd = numMap[cmd];
+    }
+
+    if (cmd === "clear") {
+      setHistory([]);
+      setMode("main");
       return;
     }
+
+    if (cmd === "help" || cmd === "menu") {
+      push([{ type: "output", content: MENU_TEXT }, { type: "blank", content: "" }]);
+      setMode("main");
+      return;
+    }
+
     if (cmd === "whoami") {
-      push([
-        { type: "output", content: WHOAMI_TEXT },
-        { type: "blank", content: "" },
-      ]);
+      push([{ type: "output", content: WHOAMI_TEXT }, { type: "blank", content: "" }]);
       return;
     }
+
     if (cmd === "ls projects" || cmd === "ls") {
-      const list = projects.map((p) => `  [${p.id}] ${p.title}`).join("\n");
+      const letters = ["a", "b", "c", "d"];
+      const list = projects.map((p, i) => `  [${letters[i] ?? i}] ${p.title}`).join("\n");
       push([
         { type: "output", content: list },
-        { type: "output", content: "\n'open <번호>' 로 상세보기" },
+        { type: "output", content: "\n알파벳을 입력하면 상세보기  (q: 메뉴로)" },
         { type: "blank", content: "" },
       ]);
+      setMode("projects");
       return;
     }
+
     if (cmd.startsWith("open ")) {
       const num = parseInt(cmd.replace("open ", ""));
       const project = projects.find((p) => p.id === num);
@@ -103,27 +142,22 @@ export default function InteractiveTerminal({
       onOpenProject?.(num);
       return;
     }
+
     if (cmd === "cat skills" || cmd === "skills") {
-      push([
-        { type: "output", content: SKILLS_TEXT },
-        { type: "blank", content: "" },
-      ]);
+      push([{ type: "output", content: SKILLS_TEXT }, { type: "blank", content: "" }]);
       return;
     }
+
     if (cmd === "cat about" || cmd === "about") {
-      push([
-        { type: "output", content: ABOUT_TEXT },
-        { type: "blank", content: "" },
-      ]);
+      push([{ type: "output", content: ABOUT_TEXT }, { type: "blank", content: "" }]);
       return;
     }
+
     if (cmd === "contact") {
-      push([
-        { type: "output", content: CONTACT_TEXT },
-        { type: "blank", content: "" },
-      ]);
+      push([{ type: "output", content: CONTACT_TEXT }, { type: "blank", content: "" }]);
       return;
     }
+
     if (cmd === "theme") {
       document.querySelector<HTMLButtonElement>(".theme-toggle")?.click();
       push([
@@ -132,11 +166,18 @@ export default function InteractiveTerminal({
       ]);
       return;
     }
+
+    const errors = [
+      ` /\\_/\\\n( ×.× )  command not found: ${raw}\n > 💼 <\n         혹시 개발자를 찾고 계셨나요? 구직 중입니다`,
+      `404: '${raw}' not found\n(저는 있습니다. 열심히 일할 준비 완료 ✅)`,
+      `bash: ${raw}: command not found\n...근데 개발자는 찾으셨나요? 공교롭게도 구직 중입니다 🙋‍♂️`,
+      `Error: 명령어도 없고 직장도 없습니다\n        (제발 연락주세요)`,
+    ];
     push([
-      { type: "error", content: `command not found: ${raw}` },
-      { type: "output", content: "'help'로 사용 가능한 커맨드를 확인하세요" },
+      { type: "output", content: errors[errIdx % errors.length] },
       { type: "blank", content: "" },
     ]);
+    setErrIdx((prev) => prev + 1);
   };
 
   const handleKey = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -155,6 +196,8 @@ export default function InteractiveTerminal({
       setInput(idx === -1 ? "" : (cmdHistory[idx] ?? ""));
     }
   };
+
+  const placeholder = mode === "projects" ? "a/b/c/d 입력... (q: 뒤로)" : "숫자(1~6) 또는 커맨드...";
 
   const inner = (
     <>
@@ -209,7 +252,7 @@ export default function InteractiveTerminal({
           onKeyDown={handleKey}
           autoComplete="off"
           spellCheck={false}
-          placeholder="입력하세요..."
+          placeholder={placeholder}
         />
       </div>
     </>

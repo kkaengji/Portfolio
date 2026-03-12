@@ -14,12 +14,12 @@ export const timeline: TimelineItem[] = [
   {
     year: "2020 – 2025",
     title: "C# / ASP.NET 개발자",
-    sub: "4년 8개월 · 프론트·백엔드 구분 없이 실무",
+    sub: "4년 8개월 · DB 설계·SP 작성부터 화면까지 전체 흐름 실무 · LS전선·SK넥실리스 등 납품",
   },
   {
     year: "2025 –",
-    title: "풀스택 부트캠프 수료",
-    sub: "React · Next.js · TypeScript · Spring Boot",
+    title: "프론트엔드 전환 · 부트캠프 수료",
+    sub: "React · Next.js · TypeScript · 경력 기반 설계 관점 적용",
     active: true,
   },
 ];

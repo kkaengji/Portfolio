@@ -30,7 +30,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -288,7 +288,7 @@ body {
 
 /* intro 터미널은 높이 제한 + 스크롤 */
 #intro .terminal-window .terminal-body {
-  height: 420px;
+  height: 560px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
@@ -296,7 +296,7 @@ body {
 
 @media (max-width: 768px) {
   #intro .terminal-window .terminal-body {
-    height: 360px;
+    height: 460px;
   }
 }
 #intro .terminal-window .terminal-body::-webkit-scrollbar {
@@ -391,7 +391,7 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .section-cmd {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   background: var(--bg2);
   padding: 3px 10px;
@@ -399,7 +399,7 @@ body {
   border: 1px solid var(--border);
 }
 .section-title {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.03em;
   font-family: var(--font-sans);
@@ -409,13 +409,13 @@ body {
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
 }
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 16px;
+  padding: 20px;
   cursor: pointer;
   transition:
     border-color 0.15s,
@@ -426,20 +426,20 @@ body {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.07);
 }
 .card-label {
-  font-size: 10px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
   margin-bottom: 6px;
 }
 .card-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
   font-family: var(--font-sans);
 }
 .card-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.5;
   font-family: var(--font-sans);
@@ -457,7 +457,7 @@ body {
   margin-top: 10px;
 }
 .card-link {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   text-decoration: none;
   border: 1px solid var(--border);
@@ -476,7 +476,7 @@ body {
   border-color: rgba(37, 99, 235, 0.3);
 }
 .tag {
-  font-size: 10.5px;
+  font-size: 12.5px;
   padding: 2px 7px;
   background: var(--bg2);
   border-radius: 4px;
@@ -495,57 +495,45 @@ body {
 }
 
 /* Skills */
+.skills-category-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+.skills-category-label:first-of-type {
+  margin-top: 0;
+}
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 .skill-item {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 10px 12px;
+  padding: 12px 16px;
 }
 .skill-name {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 6px;
-}
-.skill-bar {
-  height: 3px;
-  background: var(--bg2);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.skill-fill {
-  height: 100%;
-  border-radius: 2px;
-  background: var(--accent);
-  transition: width 1s ease;
-}
-.skill-fill.green {
-  background: var(--accent2);
-}
-.skill-fill.yellow {
-  background: var(--accent4);
-}
-.skill-level {
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 4px;
 }
 
 /* Contact */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 .contact-item {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -560,18 +548,18 @@ body {
   font-size: 18px;
 }
 .contact-label {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .contact-value {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 500;
   font-family: var(--font-sans);
 }
 
 /* Footer */
 .site-footer {
-  margin-top: 24px;
+  margin-top: 80px;
   padding-top: 20px;
   border-top: 1px dashed var(--border);
   color: var(--muted);
@@ -718,7 +706,7 @@ body {
 }
 
 .modal-body {
-  padding: 24px;
+  padding: 28px 32px;
   overflow-y: auto;
   flex: 1;
 }
@@ -737,7 +725,7 @@ body {
 }
 
 .modal-project-title {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.03em;
   font-family: var(--font-sans);
@@ -765,25 +753,31 @@ body {
 }
 
 .modal-section {
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .modal-section-label {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--muted);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
+.modal-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .modal-text {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.85;
   font-family: var(--font-sans);
 }
 
@@ -791,20 +785,32 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .modal-feature-item {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  font-family: var(--font-mono);
+  gap: 10px;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+.modal-feature-title {
+  color: var(--text);
+  font-weight: 600;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+}
+
+.modal-feature-desc {
+  color: var(--muted);
 }
 
 .modal-trouble {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
   background: rgba(220, 38, 38, 0.05);
   border: 1px solid rgba(220, 38, 38, 0.15);
@@ -828,7 +834,7 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   text-decoration: none;
   border: 1px solid var(--border);
@@ -1053,7 +1059,7 @@ body {
 
 .it-output {
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 14px;
   line-height: 1.65;
   padding-left: 2px;
   margin-bottom: 2px;
@@ -1283,7 +1289,7 @@ body {
 }
 
 .modal-top-info .modal-meta-item {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   display: flex;
   align-items: center;

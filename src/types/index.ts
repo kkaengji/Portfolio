@@ -30,9 +30,6 @@ export type Project = {
 
 export type Skill = {
   name: string;
-  level: number;
-  label: string;
-  color?: "blue" | "green" | "yellow";
 };
 
 export type TimelineItem = {
